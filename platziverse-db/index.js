@@ -16,6 +16,10 @@ module.exports = async function (config) {
 
   await sequelize.authenticate() // este método comprueba que la base de datos se conecte correctamente
 
+  if (config.setup) {
+    await sequelize.sync({ force: true })
+  }
+
   const Agent = {}
   const Metric = {}
 

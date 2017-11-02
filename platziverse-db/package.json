@@ -4,6 +4,7 @@
   "description": "A simple IoT platform - DB Module",
   "main": "index.js",
   "scripts": {
+    "setup": "DEBUG=platziverse:* node setup.js",
     "lint": "standard"
   },
   "repository": {
@@ -20,6 +21,7 @@
     "standard": "^10.0.3"
   },
   "dependencies": {
+    "debug": "^3.1.0",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.22.0"
