@@ -1,0 +1,22 @@
+{
+  "name": "platziverse-db",
+  "version": "1.0.0",
+  "description": "A simple IoT platform - DB Module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalcantara90/platziverse-iot.git"
+  },
+  "author": "Jonathan Alcántara Jiménez <jalcantara1990@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jalcantara90/platziverse-iot/issues"
+  },
+  "homepage": "https://github.com/jalcantara90/platziverse-iot#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
