@@ -2,7 +2,7 @@
 
 module.exports = function config (configExtra) {
   const config = {
-    database: process.env.DB_NAME || 'platziverse',
+    database: process.env.DB_NAME || 'platziverse_iot',
     username: process.env.DB_USER || 'platzi',
     password: process.env.DB_PASS || 'platzi',
     hostname: process.env.DB_HOST || 'localhost',
