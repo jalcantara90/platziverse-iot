@@ -5,14 +5,14 @@ const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 
 const metricFixtures = require('./fixtures/metric')
-const agentFixture = require('./fixtures/agent')
+// const agentFixture = require('./fixtures/agent')
 
 let config = {
   logging: function () {}
 }
 
-let single = Object.assign({}, metricFixtures.single)
-let type = 'TEMP'
+// let single = Object.assign({}, metricFixtures.single)
+// let type = 'TEMP'
 let uuid = 'yyy-yyy-yyy'
 let MetricStub = null
 let db = null
@@ -20,41 +20,41 @@ let sandbox = null
 
 let AgentStub = { hasMany: sinon.spy() }
 
-let uuidArgs = {
-  where: {
-    uuid
-  }
-}
+// let uuidArgs = {
+//   where: {
+//     uuid
+//   }
+// }
 
-let typeUuidArgs = {
-  attributes: [ 'id', 'type', 'value', 'createdAt' ],
-  where: {
-    type
-  },
-  limit: 20,
-  order: [[ 'createdAt', 'DESC' ]],
-  include: [{
-    attributes: [],
-    model: AgentStub,
-    where: {
-      uuid
-    }
-  }],
-  raw: true
-}
+// let typeUuidArgs = {
+//   attributes: [ 'id', 'type', 'value', 'createdAt' ],
+//   where: {
+//     type
+//   },
+//   limit: 20,
+//   order: [[ 'createdAt', 'DESC' ]],
+//   include: [{
+//     attributes: [],
+//     model: AgentStub,
+//     where: {
+//       uuid
+//     }
+//   }],
+//   raw: true
+// }
 
-let metricArgs = {
-  attributes: ['type'],
-  group: [ 'type' ],
-  include: [{
-    attributes: [],
-    model: AgentStub,
-    where: {
-      uuid
-    }
-  }],
-  raw: true
-}
+// let metricArgs = {
+//   attributes: ['type'],
+//   group: [ 'type' ],
+//   include: [{
+//     attributes: [],
+//     model: AgentStub,
+//     where: {
+//       uuid
+//     }
+//   }],
+//   raw: true
+// }
 
 test.beforeEach(async () => {
   sandbox = sinon.sandbox.create()

@@ -1,7 +1,5 @@
 'use strict'
 
-const agentFixtures = require('./agent')
-
 const metric = {
   id: 1,
   agentId: 'yyy-yyy-yyy',
