@@ -1,0 +1,24 @@
+{
+  "name": "platziverse-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple Iot Platform - Agent",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalcantara90/platziverse-iot.git"
+  },
+  "author": "Jonathan Alcántara <jalcantara1990@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jalcantara90/platziverse-iot/issues"
+  },
+  "homepage": "https://github.com/jalcantara90/platziverse-iot#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
