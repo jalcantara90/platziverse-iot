@@ -30,6 +30,7 @@
     "chalk": "^2.3.0",
     "debug": "^3.1.0",
     "express": "^4.16.2",
+    "express-asyncify": "^1.0.0",
     "platziverse-db": "file:../platziverse-db"
   }
 }
