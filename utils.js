@@ -15,5 +15,8 @@ function parsePayload (payload) {
 }
 
 module.exports = {
-  parsePayload
+  parsePayload,
+  authConfig: {
+    secret: process.env.SECRET || 'platzi',
+  }
 }

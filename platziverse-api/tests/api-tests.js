@@ -4,13 +4,18 @@ const test = require('ava')
 const request = require('supertest')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
+const util = require('util')
+const { authConfig } = require('../../utils')
 
 const agentFixtures = require('../../platziverse-test/fixtures/agent')
+const auth = require('../auth')
+const sign = util.promisify(auth.sign)
 // const metricFixtures = require('../../platziverse-test/fixtures/metric')
 
 let sandbox = null
 let server = null
 let dbStub = null
+let token = null
 let AgentStub = {}
 let MetricStub = {}
 
@@ -26,6 +31,8 @@ test.beforeEach(async () => {
   AgentStub.findConnected = sandbox.stub()
   AgentStub.findConnected.returns(Promise.resolve(agentFixtures.connected))
 
+  token = await sign({ admin:true, username: 'platzi'}, authConfig.secret)
+
   const api = proxyquire('../api', {
     'platziverse-db': dbStub
   })
@@ -40,8 +47,10 @@ test.afterEach(() => {
 })
 
 test.serial.cb('/api/agents', t => {
+  console.log('prueba token: ' + token)
   request(server)
     .get('/api/agents')
+    .set('Authorization', `Bearer ${token}`)
     .expect(200)
     .expect('Content-Type', /json/)
     .end((err, res) => {
@@ -53,6 +62,7 @@ test.serial.cb('/api/agents', t => {
     })
 })
 
+test.serial.todo('/api/agents - not authorized')
 test.serial.todo('/api/agent/:uuid')
 test.serial.todo('/api/agent/:uuid - not found')
 test.serial.todo('/api/metrics/:uuid')

@@ -4,7 +4,9 @@ const debug = require('debug')('Platziverse:api-routes')
 const express = require('express')
 const db = require('platziverse-db')
 const asyncify = require('express-asyncify')
+const auth = require('express-jwt')
 const conf = require('../platziverse-config')
+const { authConfig } = require('../utils')
 
 const config = conf({setup: false})
 
@@ -27,12 +29,24 @@ api.use('*', async (req, res, next) => {
   next()
 })
 
-api.get('/agents', async (req, res, next) => {
+api.get('/agents', auth(authConfig),async (req, res, next) => {
   debug('A request has come to /agents')
+
+  const { user } = req
+  console.log(user)
+  if (!user || !user.username) {
+    console.log('user: ' + user)
+    console.log('username: ' + user.user.username)
+    return res.send({ message: 'hola'})
+  }
 
   let agents = []
   try {
-    agents = await Agent.findConnected()
+    if (user.admin) {
+      agents = await Agent.findConnected()
+    }else {
+      agents = await Agent.findByUsername(user.user.username)
+    }
   } catch (e) {
     next(e)
   }
