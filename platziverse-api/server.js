@@ -4,10 +4,14 @@ const http = require('http')
 const chalk = require('chalk')
 const express = require('express')
 
+const api = require('./api')
+
 const port = process.env.PORT || 3000
 const app = express()
 const server = http.createServer(app)
 
-server.listen(port , () => {
+app.use('/api', api)
+
+server.listen(port, () => {
   console.log(`${chalk.green('--> [Platziverse-API]')} server listening on port ${port}`)
 })
