@@ -69,7 +69,7 @@ class PlatziverseAgent extends EventEmitter {
             // con object estructuring se pueden sacar los métedos dentro de un objeto
             for (let [ metric, fn ] of this._metrics) {
               // se puede saber si una función tiene callback mirando sus parámetros con .length
-              if (fn.lenth === 1) {
+              if (fn.length === 1) {
                 fn = util.promisify(fn)
               }
 
@@ -113,7 +113,7 @@ class PlatziverseAgent extends EventEmitter {
       clearInterval(this._timer)
       this._started = false
       this.emit('disconnected', this._agentId)
-      this._agentId.end()
+      this._client.end()
     }
   }
 }
