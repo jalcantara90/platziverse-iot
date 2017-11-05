@@ -5,6 +5,7 @@ const express = require('express')
 const db = require('platziverse-db')
 const asyncify = require('express-asyncify')
 const auth = require('express-jwt')
+const guard = require('express-jwt-permissions')()
 const conf = require('../platziverse-config')
 const { authConfig } = require('../utils')
 
@@ -33,11 +34,9 @@ api.get('/agents', auth(authConfig),async (req, res, next) => {
   debug('A request has come to /agents')
 
   const { user } = req
-  console.log(user)
+
   if (!user || !user.username) {
-    console.log('user: ' + user)
-    console.log('username: ' + user.user.username)
-    return res.send({ message: 'hola'})
+    return next(new Error(`Not Agent found`))
   }
 
   let agents = []
@@ -72,7 +71,7 @@ api.get('/agent/:uuid', async (req, res, next) => {
   res.send(agent)
 })
 
-api.get('/metrics/:uuid', async (req, res, next) => {
+api.get('/metrics/:uuid', auth(authConfig), guard.check(['metrics:read']),async (req, res, next) => {
   const { uuid } = req.params
 
   debug(`request to /metrics/${uuid}`)

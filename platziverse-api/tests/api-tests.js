@@ -32,7 +32,7 @@ test.beforeEach(async () => {
   AgentStub.findConnected.returns(Promise.resolve(agentFixtures.connected))
 
   token = await sign({ admin:true, username: 'platzi'}, authConfig.secret)
-
+  console.log(authConfig.secret)
   const api = proxyquire('../api', {
     'platziverse-db': dbStub
   })
@@ -47,7 +47,7 @@ test.afterEach(() => {
 })
 
 test.serial.cb('/api/agents', t => {
-  console.log('prueba token: ' + token)
+  console.log(token)
   request(server)
     .get('/api/agents')
     .set('Authorization', `Bearer ${token}`)
