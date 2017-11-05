@@ -7,7 +7,7 @@ const chalk = require('chalk')
 const db = require('platziverse-db')
 const conf = require('../platziverse-config')
 
-const { parsePayload } = require('./utils')
+const { parsePayload } = require('../utils')
 
 const config = conf({setup: false})
 
