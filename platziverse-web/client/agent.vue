@@ -119,6 +119,7 @@ module.exports = {
       this.pid = agent.pid
 
       this.loadMetrics()
+      this.startRealtime()
     },
 
     async loadMetrics () {
@@ -133,14 +134,22 @@ module.exports = {
       let metrics
       try {
         metrics = await request(options)
-        console.log(metrics)
       } catch (e) {
         this.error = e.error.error
-        console.log(e)
         return
       }
 
       this.metrics = metrics
+    },
+
+    startRealtime() {
+      const { uuid, socket } = this
+
+      socket.on('agent/disconnected', payload => {
+        if (payload.agent.uuid == uuid) {
+          this.connected = false
+        }
+      })
     },
 
     toggleMetrics() {
