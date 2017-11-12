@@ -98,10 +98,11 @@ module.exports = {
   methods: {
     async initialize() {
       const { uuid } = this
+      const { serverHost } = require('../config')
 
       const options = {
         method: 'GET',
-        url: `http://localhost:8080/agent/${uuid}`,
+        url: `${serverHost}/agent/${uuid}`,
         json: true
       }
 
@@ -127,7 +128,7 @@ module.exports = {
 
       const options = {
         method: 'GET',
-        url: `http://localhost:8080/metrics/${uuid}`,
+        url: `${serverHost}/metrics/${uuid}`,
         json: true
       }
 
