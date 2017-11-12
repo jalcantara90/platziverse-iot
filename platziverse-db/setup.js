@@ -3,12 +3,14 @@
 const debug = require('debug')('platziverse:db:setup')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
+const minimist = require('minimist')
 const db = require('./')
 
+const args = minimist(process.argv)
 const prompt = inquirer.createPromptModule()
 
 async function setup () {
-  if (process.argv[2] !== '--y') {
+  if (!args.yes) {
     const answer = await prompt({
       type: 'confirm',
       name: 'setup',
