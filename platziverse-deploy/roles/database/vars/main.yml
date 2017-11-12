@@ -1,4 +1,4 @@
-postgresql_database:
+postgresql_databases:
   - name: platziverse
     owner: platzi
     hstore: yes
@@ -9,4 +9,4 @@ postgresql_users:
 postgresql_user_privileges:
   - name: platzi
     db: platziverse
-    priv: 'ALL'
+    priv: "ALL"

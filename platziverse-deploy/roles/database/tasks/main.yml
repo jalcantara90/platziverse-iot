@@ -3,7 +3,7 @@
   service:
     name=postgresql
     state=reloaded
--name: Restaring Redis
+- name: Restaring Redis
   service:
     name=redis
     state=restarted
