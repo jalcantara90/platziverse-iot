@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <agent uuid="dbde51d0-6454-4fa7-a5b3-221c0abcd147" ></agent> -->
-    <metric uuid="467371fa-7e1c-4e9e-99ed-74fd191f667a" 
+    <agent uuid="467371fa-7e1c-4e9e-99ed-74fd191f667a" :socket="socket"></agent>
+    <!-- <metric uuid="467371fa-7e1c-4e9e-99ed-74fd191f667a" 
             type="callbackMetric"
-            :socket="socket"></metric>
+            :socket="socket"></metric> -->
     <agent
       v-for="agent in agents"
       :uuid="agent.uuid"
