@@ -1,0 +1,30 @@
+{
+  "name": "platziverse-cli",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Simple IoT platform - CLI",
+  "bin": "platziverse.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalcantara90/platziverse-iot.git"
+  },
+  "author": "Jonathan Alcántara <jalcantara1990@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jalcantara90/platziverse-iot/issues"
+  },
+  "homepage": "https://github.com/jalcantara90/platziverse-iot#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "args": "^3.0.7",
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.5",
+    "minimist": "^1.2.0",
+    "platziverse-agent": "file:../platziverse-agent"
+  }
+}
